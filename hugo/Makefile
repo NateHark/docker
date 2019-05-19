@@ -4,5 +4,5 @@ CWD := $(dir $(MAKEFILE_PATH))
 DOCKER_REGISTRY := registry:5000
 
 all:
-	docker build --no-cache --tag hugo --tag hugo:$(HUGO_VERSION) --tag $(DOCKER_REGISTRY)/hugo $(CWD)
+	docker build --no-cache --build-arg hugoVersion=$(HUGO_VERSION) --tag hugo --tag hugo:$(HUGO_VERSION) --tag $(DOCKER_REGISTRY)/hugo $(CWD)
 	docker push $(DOCKER_REGISTRY)/hugo
