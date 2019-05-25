@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:9-slim
 
 ARG hugoVersion
 
