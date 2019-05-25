@@ -1,7 +1,7 @@
-FROM alpine:latest
+FROM debian:9-slim
 
-RUN apk update && apk add python py-pip groff
-RUN pip install awscli --upgrade --user
+RUN apt-get update && apt-get install -y python3-pip groff
+RUN pip3 install awscli --upgrade --user
 
 # Add aws and other pip-installed dependencies to PATH
 ENV PATH "${PATH}:/root/.local/bin"
