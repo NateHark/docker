@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.12.1
 
 RUN apk update && apk add python3 py3-pip groff
 RUN pip install awscli --upgrade --user
