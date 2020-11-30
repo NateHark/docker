@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk update && apk add python py-pip groff
+RUN apk update && apk add python3 py3-pip groff
 RUN pip install awscli --upgrade --user
 
 # Add aws and other pip-installed dependencies to PATH
