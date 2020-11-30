@@ -1,11 +1,10 @@
-FROM alpine:3.12.1
+FROM debian:10.6-slim 
 
-RUN apk update && apk add python3 py3-pip groff
-RUN pip install awscli --upgrade --user
+ARG awscliVersion=2.0.30
 
-# Add aws and other pip-installed dependencies to PATH
-ENV PATH "${PATH}:/root/.local/bin"
+RUN apt-get update && apt-get upgrade -y && apt-get install -y curl unzip 
+RUN curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64-${awscliVersion}.zip -o awscliv2.zip
+RUN unzip awscliv2.zip
+RUN ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
 
-VOLUME "/data"
-
-ENTRYPOINT ["/root/.local/bin/aws"]
+ENTRYPOINT ["/usr/local/bin/aws"]
